@@ -1,0 +1,23 @@
+[project]
+name = "rah"
+version = "0.1.0"
+description = "Retrieval-Augmented Hierarchy - A smarter alternative to RAG"
+authors = [
+    {name = "RAH Contributors", email = "rah@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+docs = [
+    "PyMuPDF>=1.23.0",
+    "python-docx>=1.1.0"
+]
+
+[project.scripts]
+rah = "rah.cli.main:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
