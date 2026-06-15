@@ -1,0 +1,860 @@
+{
+  "rah_version": "0.1.0",
+  "root_path": "/home/dialgga/mapping",
+  "project_summary": "SUMMARY: A Python module in the HMA project.\nTOPICS: module, code",
+  "created_at": "2026-06-15T15:12:15.259026+00:00",
+  "updated_at": "2026-06-15T15:12:15.259026+00:00",
+  "total_files": 26,
+  "directory_tree": {
+    "README.md": null,
+    "examples": {
+      "basic_usage.py": null
+    },
+    "pyproject.toml": null,
+    "rah": {
+      "__init__.py": null,
+      "cli": {
+        "__init__.py": null,
+        "main.py": null
+      },
+      "core": {
+        "__init__.py": null,
+        "config.py": null,
+        "exceptions.py": null,
+        "models.py": null
+      },
+      "indexing": {
+        "__init__.py": null,
+        "analyzer.py": null,
+        "map_builder.py": null,
+        "relationship.py": null,
+        "summarizer.py": null,
+        "walker.py": null
+      },
+      "parsers": {
+        "__init__.py": null,
+        "code_parser.py": null,
+        "doc_parser.py": null
+      },
+      "querying": {
+        "__init__.py": null,
+        "answerer.py": null,
+        "reader.py": null,
+        "router.py": null,
+        "traverser.py": null
+      },
+      "storage": {
+        "__init__.py": null,
+        "json_store.py": null
+      }
+    }
+  },
+  "nodes": {
+    "README.md": {
+      "path": "README.md",
+      "file_type": "markdown",
+      "category": "document",
+      "size_bytes": 4920,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "3ad6037ed14e6b80e004d660ac86364a0b607519bad44b0ffc5f06b3c8007a99",
+      "line_count": 146
+    },
+    "rah/__init__.py": {
+      "path": "rah/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 5110,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class HMA"
+      ],
+      "imports": [
+        "from hma.core.models import FileNode, Relationship, KnowledgeMap, Answer",
+        "from hma.core.config import HMAConfig",
+        "from hma.core.exceptions import HMAError, IndexingError, QueryError, NoLLMError, MapNotFoundError",
+        "from hma.indexing.map_builder import MapBuilder",
+        "from hma.querying.answerer import QueryEngine",
+        "from hma.storage.json_store import JSONStore",
+        "from typing import Callable, Optional, Union",
+        "from pathlib import Path"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "819be22b659e6f69037e5a9a3c3f80c46413e816606acc076035ab0bbd69f665",
+      "line_count": 160
+    },
+    "rah/cli/main.py": {
+      "path": "rah/cli/main.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 4205,
+      "summary": "FILES: rah/core/models.py\nREASONING: The models file is central to the project structure.",
+      "key_topics": [],
+      "exports": [
+        "def _get_dummy_llm()",
+        "def main()"
+      ],
+      "imports": [
+        "import argparse",
+        "import sys",
+        "import json",
+        "import os",
+        "from pathlib import Path",
+        "from hma import HMA",
+        "from hma.core.exceptions import HMAError"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "7f463c5b33225189c567ff0cb1c09d76dff4c73dfa74e3136554e4cf763331ab",
+      "line_count": 112
+    },
+    "rah/core/config.py": {
+      "path": "rah/core/config.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 5556,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class HMAConfig"
+      ],
+      "imports": [
+        "from dataclasses import dataclass, field",
+        "from typing import Optional"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "f73a2dc0c063ebad4a1ec3ad1cfa3d6f8aca9d61df2e84677b007505199e7515",
+      "line_count": 215
+    },
+    "rah/core/models.py": {
+      "path": "rah/core/models.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 9261,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class FileNode",
+        "class Relationship",
+        "class KnowledgeMap",
+        "class Answer"
+      ],
+      "imports": [
+        "from dataclasses import dataclass, field",
+        "from typing import Optional",
+        "from datetime import datetime"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "14ec93295277ab9959a6c8d9373239bbda0ca5caf035011bcf0c309d7f2bfee7",
+      "line_count": 302
+    },
+    "rah/indexing/analyzer.py": {
+      "path": "rah/indexing/analyzer.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 4323,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class AnalysisResult",
+        "class Analyzer"
+      ],
+      "imports": [
+        "import hashlib",
+        "from pathlib import Path",
+        "from dataclasses import dataclass, field",
+        "from hma.core.config import HMAConfig",
+        "from hma.parsers.code_parser import CodeParser, CodeParseResult",
+        "from hma.parsers.doc_parser import DocParser, DocParseResult",
+        "from hma.indexing.walker import FileInfo"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "63c8a1fcc5bc9539759c77836daea282f42fd0662374fc5b62c4be9d89a6c804",
+      "line_count": 129
+    },
+    "rah/indexing/map_builder.py": {
+      "path": "rah/indexing/map_builder.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 6783,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class MapBuilder"
+      ],
+      "imports": [
+        "from datetime import datetime, timezone",
+        "from pathlib import Path",
+        "from typing import Callable, Optional",
+        "from hma.core.models import FileNode, KnowledgeMap",
+        "from hma.core.config import HMAConfig",
+        "from hma.core.exceptions import IndexingError",
+        "from hma.indexing.walker import Walker",
+        "from hma.indexing.analyzer import Analyzer, AnalysisResult",
+        "from hma.indexing.summarizer import Summarizer",
+        "from hma.indexing.relationship import RelationshipExtractor"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "95a9c4125ae9dd2b1567f1b37325fb0f8698921792b5a646d6f398445eead896",
+      "line_count": 176
+    },
+    "rah/indexing/relationship.py": {
+      "path": "rah/indexing/relationship.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 11778,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class RelationshipExtractor"
+      ],
+      "imports": [
+        "import os",
+        "import re",
+        "from pathlib import Path",
+        "from hma.core.models import Relationship",
+        "from hma.core.config import HMAConfig",
+        "from hma.indexing.analyzer import AnalysisResult"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "86d006d1232edbe9713f20b70b314d424700c5fe96dc9b073191c5df846b1687",
+      "line_count": 331
+    },
+    "rah/indexing/summarizer.py": {
+      "path": "rah/indexing/summarizer.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 8754,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class Summarizer"
+      ],
+      "imports": [
+        "import json",
+        "from typing import Callable",
+        "from hma.core.config import HMAConfig",
+        "from hma.indexing.analyzer import AnalysisResult"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "3487b89f8c915bc58785e717614a12ec827ebe25ebd8599685c66f641a89a38b",
+      "line_count": 250
+    },
+    "rah/indexing/walker.py": {
+      "path": "rah/indexing/walker.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 5749,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class FileInfo",
+        "class Walker"
+      ],
+      "imports": [
+        "import os",
+        "import fnmatch",
+        "from pathlib import Path",
+        "from dataclasses import dataclass",
+        "from hma.core.config import HMAConfig"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "dfd03e30dd052972b3cc8e06c30b4833fae3fa14225c1bf689ec69281cbda935",
+      "line_count": 188
+    },
+    "rah/parsers/code_parser.py": {
+      "path": "rah/parsers/code_parser.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 10612,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class CodeParseResult",
+        "class CodeParser"
+      ],
+      "imports": [
+        "import ast",
+        "import re",
+        "from pathlib import Path",
+        "from typing import Optional",
+        "from hma.core.exceptions import ParserError"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "5dc1d67cbff1c666de5c9d54ec75ceecd50ad314868da0fd97dc5799e0cd11ac",
+      "line_count": 224
+    },
+    "rah/parsers/doc_parser.py": {
+      "path": "rah/parsers/doc_parser.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 8739,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class DocParseResult",
+        "class DocParser"
+      ],
+      "imports": [
+        "import re",
+        "import json",
+        "from pathlib import Path",
+        "from typing import Optional",
+        "from hma.core.exceptions import ParserError",
+        "import fitz",
+        "from docx import Document"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "f6337ce3803223cfa84a99100c1fb810d32d0f1ae9d0f5c5de2535fd4cea13e1",
+      "line_count": 227
+    },
+    "rah/querying/answerer.py": {
+      "path": "rah/querying/answerer.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 3633,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class QueryEngine"
+      ],
+      "imports": [
+        "from typing import Callable",
+        "from hma.core.models import KnowledgeMap, Answer",
+        "from hma.core.config import HMAConfig",
+        "from hma.querying.router import Router",
+        "from hma.querying.reader import Reader",
+        "from hma.querying.traverser import Traverser"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "2e4a52a6a7b4726191a0dc217d2e597323fd9d706face50cd9f4c593b752277a",
+      "line_count": 102
+    },
+    "rah/querying/router.py": {
+      "path": "rah/querying/router.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 5996,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [
+        "class Router"
+      ],
+      "imports": [
+        "import json",
+        "from typing import Callable",
+        "from hma.core.models import KnowledgeMap, FileNode",
+        "from hma.core.config import HMAConfig"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "2b497ba35a58bd80d4a7c6cf35b090986e1eeafa7200e194763825ec646037d5",
+      "line_count": 162
+    },
+    "examples/basic_usage.py": {
+      "path": "examples/basic_usage.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 1536,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [
+        "def dummy_llm(prompt)",
+        "def main()"
+      ],
+      "imports": [
+        "from hma import HMA",
+        "import os"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "22e3405e94a9a93fe30dd2f9e097e55a4728f47c7eceb4bb00a205beaefe67dd",
+      "line_count": 45
+    },
+    "pyproject.toml": {
+      "path": "pyproject.toml",
+      "file_type": "toml",
+      "category": "document",
+      "size_bytes": 481,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "4b0b8ac4d8a8cb3db47453b900d47df4986f4d97086229710f9acaedc549c528",
+      "line_count": 24
+    },
+    "rah/cli/__init__.py": {
+      "path": "rah/cli/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 24,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "1999e56bedbbb3a7d5940b4073761265b6baf6f77b5c48d1e96ab9841a712153",
+      "line_count": 2
+    },
+    "rah/core/__init__.py": {
+      "path": "rah/core/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 63,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "33e37980b21b938bf61b6c1f1a7132aa982e72be10a166601a10324553cc2128",
+      "line_count": 2
+    },
+    "rah/core/exceptions.py": {
+      "path": "rah/core/exceptions.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 811,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [
+        "class HMAError",
+        "class IndexingError",
+        "class QueryError",
+        "class NoLLMError",
+        "class MapNotFoundError",
+        "class ParserError",
+        "class StorageError"
+      ],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "acfc2ba9f053f88a769828943f794dec35c1e276112d0119a83bceb1ba4b5618",
+      "line_count": 41
+    },
+    "rah/indexing/__init__.py": {
+      "path": "rah/indexing/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 33,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "939788e73d4c147deec61a832bb8709c77e864ef3f55f479ea7e49d959e5d130",
+      "line_count": 2
+    },
+    "rah/parsers/__init__.py": {
+      "path": "rah/parsers/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 33,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "7cd06dd7ac9ac4be363cad17e10a571b0d3ac8cfe13a9db5c5534e1b43dcbc09",
+      "line_count": 2
+    },
+    "rah/querying/__init__.py": {
+      "path": "rah/querying/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 33,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "57c229b3f35739bb27738e88af21712326009efadbd37732cc4ac77ef701ab2b",
+      "line_count": 2
+    },
+    "rah/querying/reader.py": {
+      "path": "rah/querying/reader.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 1714,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [
+        "class Reader"
+      ],
+      "imports": [
+        "from pathlib import Path",
+        "from typing import Optional",
+        "from hma.core.models import FileNode",
+        "from hma.core.config import HMAConfig"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "bbb7db713a9f586333d4e30eed0a4ec4c0d335ed250788639ead8672d3441e06",
+      "line_count": 55
+    },
+    "rah/querying/traverser.py": {
+      "path": "rah/querying/traverser.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 1919,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [
+        "class Traverser"
+      ],
+      "imports": [
+        "from hma.core.models import KnowledgeMap",
+        "from hma.core.config import HMAConfig",
+        "from hma.querying.reader import Reader"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "0cbbf487cf2860c532e26a7cbc95c54bdddc517e5a2326ca0843304b7cbcc615",
+      "line_count": 64
+    },
+    "rah/storage/__init__.py": {
+      "path": "rah/storage/__init__.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 28,
+      "summary": "A Python module in the HMA project.",
+      "key_topics": [
+        "module",
+        "code"
+      ],
+      "exports": [],
+      "imports": [],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "6197b6f109ff3d13dd265e7a0e3314f74f811a59a85929f1e51c9d3b6f467145",
+      "line_count": 2
+    },
+    "rah/storage/json_store.py": {
+      "path": "rah/storage/json_store.py",
+      "file_type": "python",
+      "category": "code",
+      "size_bytes": 1788,
+      "summary": "Summary not available.",
+      "key_topics": [],
+      "exports": [
+        "class JSONStore"
+      ],
+      "imports": [
+        "import json",
+        "from pathlib import Path",
+        "from typing import Optional",
+        "from hma.core.models import KnowledgeMap",
+        "from hma.core.config import HMAConfig",
+        "from hma.core.exceptions import StorageError"
+      ],
+      "last_indexed": "2026-06-15T15:12:15.259026+00:00",
+      "content_hash": "8d134c97d89aa5b88461bc3c67becf5c217260e7184ca71b349f5bf78af54a74",
+      "line_count": 60
+    }
+  },
+  "relationships": [
+    {
+      "source": "examples/basic_usage.py",
+      "target": "rah/__init__.py",
+      "relation_type": "imports",
+      "details": "from hma import HMA"
+    },
+    {
+      "source": "pyproject.toml",
+      "target": "README.md",
+      "relation_type": "references",
+      "details": "references path 'README.md'"
+    },
+    {
+      "source": "rah/__init__.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import FileNode, Relationship, KnowledgeMap, Answer"
+    },
+    {
+      "source": "rah/__init__.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/__init__.py",
+      "target": "rah/core/exceptions.py",
+      "relation_type": "imports",
+      "details": "from hma.core.exceptions import HMAError, IndexingError, QueryError, NoLLMError, MapNotFoundError"
+    },
+    {
+      "source": "rah/__init__.py",
+      "target": "rah/indexing/map_builder.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.map_builder import MapBuilder"
+    },
+    {
+      "source": "rah/__init__.py",
+      "target": "rah/querying/answerer.py",
+      "relation_type": "imports",
+      "details": "from hma.querying.answerer import QueryEngine"
+    },
+    {
+      "source": "rah/__init__.py",
+      "target": "rah/storage/json_store.py",
+      "relation_type": "imports",
+      "details": "from hma.storage.json_store import JSONStore"
+    },
+    {
+      "source": "rah/cli/main.py",
+      "target": "rah/__init__.py",
+      "relation_type": "imports",
+      "details": "from hma import HMA"
+    },
+    {
+      "source": "rah/cli/main.py",
+      "target": "rah/core/exceptions.py",
+      "relation_type": "imports",
+      "details": "from hma.core.exceptions import HMAError"
+    },
+    {
+      "source": "rah/indexing/analyzer.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/indexing/analyzer.py",
+      "target": "rah/parsers/code_parser.py",
+      "relation_type": "imports",
+      "details": "from hma.parsers.code_parser import CodeParser, CodeParseResult"
+    },
+    {
+      "source": "rah/indexing/analyzer.py",
+      "target": "rah/parsers/doc_parser.py",
+      "relation_type": "imports",
+      "details": "from hma.parsers.doc_parser import DocParser, DocParseResult"
+    },
+    {
+      "source": "rah/indexing/analyzer.py",
+      "target": "rah/indexing/walker.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.walker import FileInfo"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import FileNode, KnowledgeMap"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/core/exceptions.py",
+      "relation_type": "imports",
+      "details": "from hma.core.exceptions import IndexingError"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/indexing/walker.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.walker import Walker"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/indexing/analyzer.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.analyzer import Analyzer, AnalysisResult"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/indexing/summarizer.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.summarizer import Summarizer"
+    },
+    {
+      "source": "rah/indexing/map_builder.py",
+      "target": "rah/indexing/relationship.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.relationship import RelationshipExtractor"
+    },
+    {
+      "source": "rah/indexing/relationship.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import Relationship"
+    },
+    {
+      "source": "rah/indexing/relationship.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/indexing/relationship.py",
+      "target": "rah/indexing/analyzer.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.analyzer import AnalysisResult"
+    },
+    {
+      "source": "rah/indexing/summarizer.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/indexing/summarizer.py",
+      "target": "rah/indexing/analyzer.py",
+      "relation_type": "imports",
+      "details": "from hma.indexing.analyzer import AnalysisResult"
+    },
+    {
+      "source": "rah/indexing/walker.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/parsers/code_parser.py",
+      "target": "rah/core/exceptions.py",
+      "relation_type": "imports",
+      "details": "from hma.core.exceptions import ParserError"
+    },
+    {
+      "source": "rah/parsers/doc_parser.py",
+      "target": "rah/core/exceptions.py",
+      "relation_type": "imports",
+      "details": "from hma.core.exceptions import ParserError"
+    },
+    {
+      "source": "rah/querying/answerer.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import KnowledgeMap, Answer"
+    },
+    {
+      "source": "rah/querying/answerer.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/querying/answerer.py",
+      "target": "rah/querying/router.py",
+      "relation_type": "imports",
+      "details": "from hma.querying.router import Router"
+    },
+    {
+      "source": "rah/querying/answerer.py",
+      "target": "rah/querying/reader.py",
+      "relation_type": "imports",
+      "details": "from hma.querying.reader import Reader"
+    },
+    {
+      "source": "rah/querying/answerer.py",
+      "target": "rah/querying/traverser.py",
+      "relation_type": "imports",
+      "details": "from hma.querying.traverser import Traverser"
+    },
+    {
+      "source": "rah/querying/reader.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import FileNode"
+    },
+    {
+      "source": "rah/querying/reader.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/querying/router.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import KnowledgeMap, FileNode"
+    },
+    {
+      "source": "rah/querying/router.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/querying/traverser.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import KnowledgeMap"
+    },
+    {
+      "source": "rah/querying/traverser.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/querying/traverser.py",
+      "target": "rah/querying/reader.py",
+      "relation_type": "imports",
+      "details": "from hma.querying.reader import Reader"
+    },
+    {
+      "source": "rah/storage/json_store.py",
+      "target": "rah/core/models.py",
+      "relation_type": "imports",
+      "details": "from hma.core.models import KnowledgeMap"
+    },
+    {
+      "source": "rah/storage/json_store.py",
+      "target": "rah/core/config.py",
+      "relation_type": "imports",
+      "details": "from hma.core.config import HMAConfig"
+    },
+    {
+      "source": "rah/storage/json_store.py",
+      "target": "rah/core/exceptions.py",
+      "relation_type": "imports",
+      "details": "from hma.core.exceptions import StorageError"
+    }
+  ]
+}

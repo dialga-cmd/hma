@@ -1,8 +1,8 @@
 """
-Basic example of how to use RAH in a Python script.
+Basic example of how to use HMA in a Python script.
 """
 
-from rah import RAH
+from hma import HMA
 import os
 
 # 1. Define your LLM wrapper.
@@ -12,16 +12,16 @@ def dummy_llm(prompt: str) -> str:
     if "You are an intelligent code router" in prompt:
         return "FILES: rah/core/models.py\nREASONING: The models file is central to the project structure."
     elif "You are answering a question" in prompt:
-        return "Based on the provided context, the RAH Knowledge Map stores nodes and relationships."
+        return "Based on the provided context, the HMA Knowledge Map stores nodes and relationships."
     
-    return "SUMMARY: A Python module in the RAH project.\nTOPICS: module, code"
+    return "SUMMARY: A Python module in the HMA project.\nTOPICS: module, code"
 
 def main():
-    print("Initializing RAH...")
-    # 2. Instantiate RAH with your LLM
-    rah = RAH(llm=dummy_llm)
+    print("Initializing HMA...")
+    # 2. Instantiate HMA with your LLM
+    rah = HMA(llm=dummy_llm)
 
-    # 3. Index a project directory. Let's index the RAH library itself!
+    # 3. Index a project directory. Let's index the HMA library itself!
     project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     print(f"Indexing project: {project_dir}")
     
