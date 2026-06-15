@@ -13,6 +13,7 @@ All done locally via AST/regex analysis — no LLM needed.
 import os
 import re
 from pathlib import Path
+from typing import Optional
 
 from hma.core.models import Relationship
 from hma.core.config import HMAConfig
@@ -104,7 +105,7 @@ class RelationshipExtractor:
         source_path: str,
         import_source: str,
         all_paths: set[str],
-    ) -> str | None:
+    ) -> Optional[str]:
         """
         Resolve an import source string to an actual file path.
 
@@ -244,7 +245,7 @@ class RelationshipExtractor:
         source_path: str,
         analysis: AnalysisResult,
         all_paths: set[str],
-    ) -> Relationship | None:
+    ) -> Optional[Relationship]:
         """Detect if this file is a test file and find what it tests."""
         filename = os.path.basename(source_path)
         dirname = os.path.dirname(source_path)
@@ -291,7 +292,7 @@ class RelationshipExtractor:
         source_path: str,
         analysis: AnalysisResult,
         all_paths: set[str],
-    ) -> Relationship | None:
+    ) -> Optional[Relationship]:
         """Detect if this is a documentation file for code."""
         filename = os.path.basename(source_path).lower()
         dirname = os.path.dirname(source_path)
